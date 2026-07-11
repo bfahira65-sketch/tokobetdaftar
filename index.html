@@ -17,16 +17,35 @@ body{
     background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
     display:flex;
     justify-content:center;
-    align-items:center;
-    height:100vh;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:20px 0;
+    overflow-y:auto;
 }
 
+@media(max-width:480px){
+
 .container{
-    width:420px;
-    background:#fff;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    width:95%;
+    padding:18px;
+    border-radius:12px;
+}
+
+.container h2{
+    font-size:22px;
+}
+
+.input-group input,
+.input-group select{
+    padding:13px;
+    font-size:16px;
+}
+
+button{
+    padding:14px;
+    font-size:17px;
+}
+
 }
 
 .container h2{
