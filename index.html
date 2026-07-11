@@ -128,7 +128,53 @@ button{
 <label>WA/Nomor Telpon</label>
 <input type="email" placeholder="xxxx">
 </div>
+<div class="input-group">
+<label>Nama Sesuai Rekening</label>
+<input type="text" placeholder="Nama sesuai rekening">
+</div>
 
+<div class="input-group">
+<label>Jenis Akun Transaksi</label>
+
+<div style="display:flex;gap:20px;margin-top:8px;">
+<label style="font-weight:normal;">
+<input type="radio" name="jenis" value="BANK" checked onclick="ubahMetode()">
+ BANK
+</label>
+
+<label style="font-weight:normal;">
+<input type="radio" name="jenis" value="EWALLET" onclick="ubahMetode()">
+ E-Wallet
+</label>
+</div>
+
+</div>
+
+<div class="input-group">
+<label id="labelMetode">Pilih Bank</label>
+
+<select id="metode" onchange="ubahLabel()">
+
+<option value="">Pilih Bank</option>
+
+<option>BCA</option>
+<option>BRI</option>
+<option>MANDIRI</option>
+<option>BNI</option>
+<option>BANK JAGO</option>
+<option>SEABANK</option>
+
+</select>
+
+</div>
+
+<div class="input-group">
+
+<label id="labelNomor">Nomor Rekening</label>
+
+<input type="text" id="nomorAkun" placeholder="Masukkan nomor rekening">
+
+</div>
 <div class="button-group">
     <button type="button" class="reset" onclick="window.location.href='https://logintokobetofficial.pages.dev/amp';">
         DAFTAR
@@ -139,6 +185,79 @@ button{
 </form>
 
 </div>
+<script>
 
+const bank = [
+"BCA",
+"BRI",
+"MANDIRI",
+"BNI",
+"BANK JAGO",
+"SEABANK"
+];
+
+const ewallet = [
+"DANA",
+"GOPAY",
+"LINKAJA",
+"OVO",
+"ShopeePay"
+];
+
+function ubahMetode(){
+
+let jenis=document.querySelector('input[name="jenis"]:checked').value;
+
+let select=document.getElementById("metode");
+
+select.innerHTML="";
+
+if(jenis=="BANK"){
+
+document.getElementById("labelMetode").innerHTML="Pilih Bank";
+
+document.getElementById("labelNomor").innerHTML="Nomor Rekening";
+
+document.getElementById("nomorAkun").placeholder="Masukkan nomor rekening";
+
+bank.forEach(function(item){
+
+let op=document.createElement("option");
+
+op.text=item;
+
+op.value=item;
+
+select.appendChild(op);
+
+});
+
+}else{
+
+document.getElementById("labelMetode").innerHTML="Pilih E-Wallet";
+
+document.getElementById("labelNomor").innerHTML="Nomor E-Wallet";
+
+document.getElementById("nomorAkun").placeholder="Masukkan nomor e-wallet";
+
+ewallet.forEach(function(item){
+
+let op=document.createElement("option");
+
+op.text=item;
+
+op.value=item;
+
+select.appendChild(op);
+
+});
+
+}
+
+}
+
+ubahMetode();
+
+</script>
 </body>
 </html>
